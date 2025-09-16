@@ -14,52 +14,58 @@
 
   h1 {
     margin-bottom: 30px;
-    font-size: 1.8em;
+    font-size: 2em;
   }
 
   .clock-container {
     display: flex;
     flex-direction: column; /* 常に縦並び */
     align-items: center;
-    gap: 20px;
+    gap: 25px;
   }
 
   .clock-box {
     background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 25px;
-    width: 250px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    padding: 30px;
+    width: 300px;
   }
 
   .city {
-    font-size: 1.2em;
-    margin-bottom: 10px;
+    font-size: 1.4em;
+    margin-bottom: 12px;
     font-weight: bold;
   }
 
   .date {
-    font-size: 1em;
-    margin-bottom: 10px;
+    font-size: 1.2em;
+    margin-bottom: 12px;
     color: #555;
   }
 
   .time {
-    font-size: 2em;
+    font-size: 2.5em;
     font-family: 'Courier New', monospace;
   }
 
-  /* スマホ対応：画面幅500px以下の場合 */
-  @media (max-width: 500px) {
+  /* iPhone 11相当の画面幅で調整 */
+  @media (max-width: 414px) {
     .clock-box {
-      width: 90%;
-      padding: 20px;
+      width: 90%;      /* 横幅を画面いっぱいに近づける */
+      padding: 35px;   /* ボックスを大きめに */
+    }
+    .city {
+      font-size: 1.6em;
+    }
+    .date {
+      font-size: 1.4em;
     }
     .time {
-      font-size: 2.5em;
+      font-size: 3em;  /* 時計を大きく */
     }
     h1 {
-      font-size: 1.5em;
+      font-size: 1.8em;
     }
   }
 </style>
