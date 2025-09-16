@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>日本とソルトレークシティの時間</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 画面幅調整 -->
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -29,19 +30,22 @@
     border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     padding: 30px;
-    width: 300px;
+    width: 90%;          /* デフォルトは90% */
+    max-width: 400px;    /* PCでも大きくなりすぎない */
+    box-sizing: border-box;
   }
 
   .city {
     font-size: 1.4em;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     font-weight: bold;
   }
 
   .date {
-    font-size: 1.2em;
-    margin-bottom: 12px;
+    font-size: 2.5em; 
+    margin-bottom: 10px;
     color: #555;
+    font-family: 'Courier New', monospace;
   }
 
   .time {
@@ -49,20 +53,18 @@
     font-family: 'Courier New', monospace;
   }
 
-  /* iPhone 11相当の画面幅で調整 */
+  /* スマホ対応：iPhone11相当（414px以下） */
   @media (max-width: 414px) {
     .clock-box {
-      width: 90%;      /* 横幅を画面いっぱいに近づける */
-      padding: 35px;   /* ボックスを大きめに */
+      width: 100%;       /* 画面いっぱい */
+      max-width: none;   /* 最大幅制限解除 */
+      padding: 35px;     /* ボックスを大きめに */
     }
     .city {
       font-size: 1.6em;
     }
-    .date {
-      font-size: 1.4em;
-    }
-    .time {
-      font-size: 3em;  /* 時計を大きく */
+    .date, .time {
+      font-size: 3em;    /* 日付と時間を大きく */
     }
     h1 {
       font-size: 1.8em;
