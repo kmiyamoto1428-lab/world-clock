@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>日本とソルトレークシティの時間</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f4f8;
+    color: #333;
+    padding: 50px;
+  }
+
+  h1 {
+    margin-bottom: 40px;
+    font-size: 2em;
+  }
+
+  .clock-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+  }
+
+  .clock-box {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 30px;
+    width: 250px;
+  }
+
+  .city {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  .date {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #555;
+  }
+
+  .time {
+    font-size: 1.8em;
+    font-family: 'Courier New', monospace;
+  }
+</style>
+</head>
+<body>
+
+<h1>日本とソルトレークシティの現在日時</h1>
+
+<div class="clock-container">
+  <div class="clock-box">
+    <div class="city">東京</div>
+    <div class="date" id="tokyo-date">----/--/--</div>
+    <div class="time" id="tokyo-time">--:--:--</div>
+  </div>
+  <div class="clock-box">
+    <div class="city">ソルトレークシティ</div>
+    <div class="date" id="saltlake-date">----/--/--</div>
+    <div class="time" id="saltlake-time">--:--:--</div>
+  </div>
+</div>
+
+<script>
+function padZero(num) {
+  return num.toString().padStart(2, '0');
+}
+
+function updateClocks() {
+  const now = new Date();
+
+  // 東京時間
+  const tokyo = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" }));
+  const tokyoDate = tokyo.getFullYear() + "/" + padZero(tokyo.getMonth() + 1) + "/" + padZero(tokyo.getDate());
+  const tokyoTime = padZero(tokyo.getHours()) + ":" + padZero(tokyo.getMinutes()) + ":" + padZero(tokyo.getSeconds());
+  document.getElementById("tokyo-date").textContent = tokyoDate;
+  document.getElementById("tokyo-time").textContent = tokyoTime;
+
+  // ソルトレークシティ時間
+  const saltLake = new Date(now.toLocaleString("en-US", { timeZone: "America/Denver" }));
+  const saltDate = saltLake.getFullYear() + "/" + padZero(saltLake.getMonth() + 1) + "/" + padZero(saltLake.getDate());
+  const saltTime = padZero(saltLake.getHours()) + ":" + padZero(saltLake.getMinutes()) + ":" + padZero(saltLake.getSeconds());
+  document.getElementById("saltlake-date").textContent = saltDate;
+  document.getElementById("saltlake-time").textContent = saltTime;
+}
+
+// 1秒ごとに更新
+setInterval(updateClocks, 1000);
+updateClocks();
+</script>
+
+</body>
+</html>
