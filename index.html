@@ -73,18 +73,18 @@
 </head>
 <body>
 
-<h1>日本とソルトレークシティの現在日時</h1>
+<h1>日本とソルトレークシティの現在時刻</h1>
 
 <div class="clock-container">
   <div class="clock-box">
     <div class="city">東京</div>
     <div class="date" id="tokyo-date">--/--</div>
-    <div class="time" id="tokyo-time">--:--:--</div>
+    <div class="time" id="tokyo-time">--:--</div>
   </div>
   <div class="clock-box">
     <div class="city">ソルトレークシティ</div>
     <div class="date" id="saltlake-date">--/--</div>
-    <div class="time" id="saltlake-time">--:--:--</div>
+    <div class="time" id="saltlake-time">--:--</div>
   </div>
 </div>
 
@@ -96,22 +96,23 @@ function padZero(num) {
 function updateClocks() {
   const now = new Date();
 
-  // 東京時間（月/日表示）
+  // 東京時間（月/日表示、時:分）
   const tokyo = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" }));
   const tokyoDate = padZero(tokyo.getMonth() + 1) + "/" + padZero(tokyo.getDate());
-  const tokyoTime = padZero(tokyo.getHours()) + ":" + padZero(tokyo.getMinutes()) + ":" + padZero(tokyo.getSeconds());
+  const tokyoTime = padZero(tokyo.getHours()) + ":" + padZero(tokyo.getMinutes());
   document.getElementById("tokyo-date").textContent = tokyoDate;
   document.getElementById("tokyo-time").textContent = tokyoTime;
 
-  // ソルトレークシティ時間（月/日表示）
+  // ソルトレークシティ時間（月/日表示、時:分）
   const saltLake = new Date(now.toLocaleString("en-US", { timeZone: "America/Denver" }));
   const saltDate = padZero(saltLake.getMonth() + 1) + "/" + padZero(saltLake.getDate());
-  const saltTime = padZero(saltLake.getHours()) + ":" + padZero(saltLake.getMinutes()) + ":" + padZero(saltLake.getSeconds());
+  const saltTime = padZero(saltLake.getHours()) + ":" + padZero(saltLake.getMinutes());
   document.getElementById("saltlake-date").textContent = saltDate;
   document.getElementById("saltlake-time").textContent = saltTime;
 }
 
-setInterval(updateClocks, 1000);
+// 1分ごとに更新
+setInterval(updateClocks, 1000 * 30); // 30秒ごとでも十分
 updateClocks();
 </script>
 
