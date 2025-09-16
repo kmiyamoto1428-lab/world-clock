@@ -19,9 +19,9 @@
 
   .clock-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* 常に縦並び */
+    align-items: center;
     gap: 20px;
-    flex-wrap: wrap;
   }
 
   .clock-box {
@@ -49,7 +49,7 @@
     font-family: 'Courier New', monospace;
   }
 
-  /* スマホ対応：画面幅が500px以下の場合 */
+  /* スマホ対応：画面幅500px以下の場合 */
   @media (max-width: 500px) {
     .clock-box {
       width: 90%;
